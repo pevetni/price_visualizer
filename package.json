@@ -1,0 +1,63 @@
+{
+  "name": "price_visualizer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@progress/kendo-barcodes-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-buttons-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-data-query": "^1.5.4",
+    "@progress/kendo-date-math": "^1.5.1",
+    "@progress/kendo-dateinputs-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-drawing": "^1.13.7",
+    "@progress/kendo-dropdowns-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-editor-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-file-saver": "^1.1.0",
+    "@progress/kendo-gantt-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-gauges-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-grid-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-inputs-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-layout-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-pivotgrid-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-popups-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-scheduler-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-spreadsheet-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-theme-default": "^4.41.0",
+    "@progress/kendo-treelist-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-treeview-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-ui": "^2020.2.617",
+    "@progress/kendo-upload-react-wrapper": "^2019.4.1014",
+    "@progress/kendo-validator-react-wrapper": "^2019.4.1014",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "jszip": "^3.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
