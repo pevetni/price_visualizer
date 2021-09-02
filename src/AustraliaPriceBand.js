@@ -4,6 +4,9 @@ import { Spreadsheet } from "@progress/kendo-spreadsheet-react-wrapper";
 import jszip from "jszip";
 
 import './AustraliaPriceBand.css'; 
+import { SaveBtn } from "./buttons/SaveBtn";
+import { ResetBtn } from "./buttons/ResetBtn";
+import { ClearBtn } from "./buttons/ClearBtn";
 
 
 class AustraliaPriceBand extends React.Component {
@@ -51,19 +54,19 @@ class AustraliaPriceBand extends React.Component {
               { 
                 index: 0,
                 textAlign: "center",
-                value: "PB1",
+                value: "PB01",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
                 borderTop: { color: "black", size: 1 },
                 borderRight: { color: "black", size: 1 },
                 bold: true,
-                background: "#E4E7EA", 
+                background: "#E4E7EA",
               },
               { 
                 index: 1,
                 textAlign: "center",
-                value: "PB2",
+                value: "PB02",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -75,7 +78,7 @@ class AustraliaPriceBand extends React.Component {
               { 
                 index: 2,
                 textAlign: "center",
-                value: "PB3",
+                value: "PB03",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -87,7 +90,7 @@ class AustraliaPriceBand extends React.Component {
               { 
                 index: 3,
                 textAlign: "center",
-                value: "PB4",
+                value: "PB04",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -99,7 +102,7 @@ class AustraliaPriceBand extends React.Component {
               { 
                 index: 4,
                 textAlign: "center",
-                value: "PB5",
+                value: "PB05",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -111,7 +114,7 @@ class AustraliaPriceBand extends React.Component {
               { 
                 index: 5,
                 textAlign: "center",
-                value: "PB6",
+                value: "PB06",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -123,7 +126,7 @@ class AustraliaPriceBand extends React.Component {
               { 
                 index: 6,
                 textAlign: "center",
-                value: "PB7",
+                value: "PB07",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -135,7 +138,7 @@ class AustraliaPriceBand extends React.Component {
               { 
                 index: 7,
                 textAlign: "center",
-                value: "PB8",
+                value: "PB08",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -147,7 +150,7 @@ class AustraliaPriceBand extends React.Component {
               { 
                 index: 8,
                 textAlign: "center",
-                value: "PB9",
+                value: "PB09",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -170,55 +173,73 @@ class AustraliaPriceBand extends React.Component {
               }, 
                
             
-            ] 
+            ],
+          },
+          { cells: 
+            [
+              {
+                index: 0,
+                 validation: {
+                    dataType: "number",
+                    from: "B1",
+                    to:"C1",
+                    allowNulls: true,
+                    comparerType:"equalTo" ,
+                    type: "reject",
+                    titleTemplate: "Number validation error",
+                    messageTemplate: "The number have to be between {0} and {1}"
+                }
+              },
+
+            ]
           }
         ],
         columns: 
           [
             {
               index: 0,
-              width: 40,
+              width: 50,
             },
             {
               index: 1,
-              width: 40,
+              width: 50,
             },
             {
               index: 2,
-              width: 40,
+              width: 50,
             },
             {
               index: 3,
-              width: 40,
+              width: 50,
             },
             {
               index: 4,
-              width: 40,
+              width: 50,
             },
             {
               index: 5,
-              width: 40,
+              width: 50,
             },
             {
               index: 6,
-              width: 40,
+              width: 50,
             },
             {
               index: 7,
-              width: 40,
+              width: 50,
             },
             {
               index: 8,
-              width: 40,
+              width: 50,
             },
             {
               index: 9,
-              width: 40,
+              width: 50,
             }
             ,
             {
               index: 10,
-              width: 200,
+              width: 250,
             }
           ]
       },
@@ -241,6 +262,17 @@ class AustraliaPriceBand extends React.Component {
           ref={this.MySpreadSheet}
           
         />
+        <div className="row">
+          <div className="col-md-4">
+            <SaveBtn />
+          </div>
+          <div className="col-md-4">
+            <ResetBtn />
+          </div>
+          <div className="col-md-4">
+            <ClearBtn />
+          </div>
+        </div>
       </div>
     );
   }
