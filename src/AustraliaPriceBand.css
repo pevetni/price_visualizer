@@ -1,0 +1,8 @@
+/* Ocultar  */
+.k-spreadsheet-action-bar,
+.k-spreadsheet-column-header,
+.k-spreadsheet-row-header,
+.k-spreadsheet-formula-bar,
+.k-spreadsheet-top-corner {
+      display:none !important;
+}
