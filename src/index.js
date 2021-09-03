@@ -5,4 +5,4 @@ import '@progress/kendo-theme-default/dist/all.css';
 
 const divRoot = document.querySelector('#root');
 
-ReactDOM.render( <AustralianPriceBand tradingDay="5" />, divRoot );
+ReactDOM.render( <AustralianPriceBand tradingDay="2021-09-01" />, divRoot );
