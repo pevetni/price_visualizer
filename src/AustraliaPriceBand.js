@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import "@progress/kendo-ui";
+import kendo from "@progress/kendo-ui";
 import { Spreadsheet } from "@progress/kendo-spreadsheet-react-wrapper";
 import jszip from "jszip";
 
@@ -12,6 +12,7 @@ const AustraliaPriceBand = ({ tradingDay }) => {
     const MySpreadSheet = useRef();
 
     const [pricesBands, setPricesBands] = useState([]);
+    const [itemsChanged, setItemsChanged] = useState([]);
 
     const urlService = `http://localhost:8080/pricebands/${tradingDay}`
   
@@ -20,8 +21,7 @@ const AustraliaPriceBand = ({ tradingDay }) => {
     
     window.JSZip = jszip;
     // This is the component instace for using methods
-    console.log(MySpreadSheet.current.widgetInstance);
-
+    //console.log(MySpreadSheet.current.widgetInstance);
       fetch(urlService, {
         method: "GET",
         headers: {
@@ -39,51 +39,78 @@ const AustraliaPriceBand = ({ tradingDay }) => {
   }, [urlService]);
 
 
-  // /* onChanging */
-  // const onChange = ({ data, range }) => {
-  //   console.log(data)
-  //   console.log(range)
-  // }
+  /* DataSource  */
+  const onRead = async (options) => {
+    
+    console.log("Clic onRead!")
 
-  // /* DataSource  */
-  // const onRead = () => {
-  //   console.log("Clic OnRead!")
-  // }
+    await fetch(urlService, {
+      method: "GET",
+      headers: {
+          "Access-Control-Allow-Origin": "*",
+          'Accept': 'application/json'
+      },
+    })
+    .then(res => res.json())
+    .then((data) => {
+        setPricesBands({ priceBands: data })
+      })
+      .catch(error => console.log('error', error));
+  }
 
-  // const onSubmit = () => {
-  //   console.log("Clic onSubmit!")
-  // }
+  const onSubmit = () => {
+    console.log("Clic onSubmit!")
 
-  // const dataSource = DataSource({
-  //   transport: {
-  //     read: onRead,
-  //     submit: onSubmit
-  //   },
-  //   batch: true,
-  //   change: function() {
-  //     $("#cancel, #save").toggleClass("k-state-disabled", !this.hasChanges());
-  //   },
-  //   schema: {
-  //     model: {
-  //       id: "ColumnID",
-  //       fields: {
-  //         PB01: { type: "number" },
-  //         PB02: { type: "number" },
-  //         PB03: { type: "number" },
-  //         PB04: { type: "number" },
-  //         PB05: { type: "number" },
-  //         PB06: { type: "number" },
-  //         PB07: { type: "number" },
-  //         PB08: { type: "number" },
-  //         PB09: { type: "number" },
-  //         PB10: { type: "number" },
-  //       }
-  //     }
-  //   }
-  // });
+    /* TODO: Invocar el Servicio de SAVE */
+    fetch(urlService, {
+      method: "PUT",
+      headers: {
+          "Access-Control-Allow-Origin": "*",
+      },
+      body: {
+        itemsChanged
+      }
+    })
+    .then(res => res.json())
+    .then((data) => {
+        console.log(data);
+      })
+      .catch(error => console.log('error', error));
+  }
+
+  /* DATASOURCE */
+  const dataSource = new kendo.data.DataSource ({
+    transport: {
+      read: onRead,
+      submit: onSubmit
+    },
+    batch: true,
+    change: function(e) {
+      console.log(e)
+    },
+    schema: {
+      model: {
+        id: "ColumnID",
+        fields: {
+          PB01: { type: "number" },
+          PB02: { type: "number" },
+          PB03: { type: "number" },
+          PB04: { type: "number" },
+          PB05: { type: "number" },
+          PB06: { type: "number" },
+          PB07: { type: "number" },
+          PB08: { type: "number" },
+          PB09: { type: "number" },
+          PB10: { type: "number" },
+        }
+      }
+    }
+  });
 
     const sheets = [
       {
+        name: "Prices",
+        dataSource: dataSource,
         frozenRows: 2,
         mergedCells: ["A1:J1", "K1:K2"],
         rows: [
@@ -253,8 +280,6 @@ const AustraliaPriceBand = ({ tradingDay }) => {
                 background: "#E4E7EA",
                 enable: false 
               }, 
-               
-            
             ],
           },
           { cells: 
@@ -329,8 +354,8 @@ const AustraliaPriceBand = ({ tradingDay }) => {
 
     return (
       <>
-        <SaveBtn tradingDay={tradingDay} />
-        <ResetBtn />
+        <SaveBtn urlService={urlService} />
+        <ResetBtn urlService={ urlService }/>
         <ClearBtn />
         <Spreadsheet
           rows={3}
@@ -339,7 +364,6 @@ const AustraliaPriceBand = ({ tradingDay }) => {
           toolbar={false}
           sheetsbar={false}
           ref={MySpreadSheet}
-          changing={ (e) => console.log("Clic") }
           
         /> 
       </>

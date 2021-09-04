@@ -7,7 +7,8 @@ export const ClearBtn = () => {
     console.log("Clic on Clear Button!")
   }
     return (
-          <Button 
+          <Button
+            id="clearBtn"
             icon="clear" 
             look="outline"
             onClick={ onClear }
