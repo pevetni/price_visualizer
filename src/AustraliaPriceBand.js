@@ -1,14 +1,19 @@
 import React, { useRef, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+
 import kendo from "@progress/kendo-ui";
 import { Spreadsheet } from "@progress/kendo-spreadsheet-react-wrapper";
 
 import './AustraliaPriceBand.css';
 
+import {  priceBandLoaded, priceBandChanged } from './actions/priceBandActions';
+
+
 const AustraliaPriceBand = ({ tradingDay }) => {
     const MySpreadSheet = useRef();
 
-    const [pricesBands, setPricesBands] = useState([]);
-    const [itemsChanged, setItemsChanged] = useState([]);
+    const dispatch = useDispatch();
+    const { prices, pricesChanged } = useSelector( state => state.priceBand );
 
     const urlService = `http://localhost:8080/pricebands/${tradingDay}`
 
@@ -26,6 +31,7 @@ const AustraliaPriceBand = ({ tradingDay }) => {
     .then((data) => {
       options.success(data)
       console.log(data)
+      dispatch( priceBandLoaded(data) );
     })
       .catch(error => options.error(error));
   }
@@ -40,14 +46,66 @@ const AustraliaPriceBand = ({ tradingDay }) => {
           'Accept': 'application/json'
       },
       body: {
-        itemsChanged
-      }
+        prices      }
     })
     .then(res => res.json())
     .then((data) => {
         options.success(data);
     }).catch(error => options.error(error));
   }
+
+/* OnChanging */
+const onChanging = (e) =>{
+  console.log(`COLUMNA==> ${e.range._ref.bottomRight.col} FILA==> ${e.range._ref.bottomRight.row} VALOR ==> ${e.data}`)
+  console.log(prices)
+  
+  switch (e.range._ref.bottomRight.col) {
+    case 0:
+      console.log("PB01");
+      dispatch(priceBandChanged({ "PB01" : e.data }));
+      break;
+    case 1:
+      console.log("PB02")
+      dispatch(priceBandChanged({ "PB02" : e.data }));
+      break;
+    case 2:
+      console.log("PB03")
+      dispatch(priceBandChanged({ "PB03" : e.data }));
+      break;
+    case 3:
+      console.log("PB04")
+      dispatch(priceBandChanged({ "PB04" : e.data }));
+      break;
+    case 4:
+      console.log("PB05")
+      dispatch(priceBandChanged({ "PB05" : e.data }));
+      break;
+    case 5:
+      console.log("PB06")
+      dispatch(priceBandChanged({ "PB06" : e.data }));
+      break;
+    case 6:
+      console.log("PB07")
+      dispatch(priceBandChanged({ "PB07" : e.data }));
+      break;
+    case 7:
+      console.log("PB08")
+      dispatch(priceBandChanged({ "PB08" : e.data }));
+      break;
+    case 8:
+      console.log("PB09")
+      dispatch(priceBandChanged({ "PB09" : e.data }));
+      break;
+    case 9:
+      console.log("PB10")
+      dispatch(priceBandChanged({ "PB10" : e.data }));
+      break;
+
+  
+    default:
+      break;
+  }
+}
 
   /* DATASOURCE */
   const dataSource = new kendo.data.DataSource ({
@@ -337,7 +395,7 @@ const AustraliaPriceBand = ({ tradingDay }) => {
           columns={11}
           useCultureDecimals={true}
           ref={MySpreadSheet}
-          changing={(e)=>console.log(`COLUMNA==> ${e.range._ref.bottomRight.col} FILA==> ${e.range._ref.bottomRight.row} VALOR ==> ${e.data}`)}
+          changing={ onChanging }
         /> 
       </>
     );
