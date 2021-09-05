@@ -25,6 +25,7 @@ const AustraliaPriceBand = ({ tradingDay }) => {
     .then(res => res.json())
     .then((data) => {
       options.success(data)
+      console.log(data)
     })
       .catch(error => options.error(error));
   }

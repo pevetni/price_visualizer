@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AustralianPriceBand from './AustraliaPriceBand';
 import '@progress/kendo-theme-default/dist/all.css';
+
+import Main from './components/Main';
 
 const divRoot = document.querySelector('#root');
 
-ReactDOM.render( <AustralianPriceBand tradingDay="2021-09-01" />, divRoot );
+ReactDOM.render( <Main />, divRoot );
