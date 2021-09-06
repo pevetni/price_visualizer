@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { SaveBtn } from '../buttons/SaveBtn';
 import { ResetBtn } from '../buttons/ResetBtn';
-import AustraliaPriceBand from '../AustraliaPriceBand';
+import AustraliaPriceBand from './AustraliaPriceBand';
 import { ClearBtn } from '../buttons/ClearBtn';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "5px",
     }
   }));
-export const Main = () => {
+export const GeneratedOffers = () => {
     const classes = useStyles();
 
     const urlService = `http://localhost:8080/pricebands/`
@@ -47,4 +47,4 @@ export const Main = () => {
     )
 }
 
-export default Main;
+export default GeneratedOffers;

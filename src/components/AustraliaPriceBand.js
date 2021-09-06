@@ -1,19 +1,21 @@
-import React, { useRef, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-
+import React, { useRef, useState, useContext } from "react";
 import kendo from "@progress/kendo-ui";
 import { Spreadsheet } from "@progress/kendo-spreadsheet-react-wrapper";
 
-import './AustraliaPriceBand.css';
-
-import {  priceBandLoaded, priceBandChanged } from './actions/priceBandActions';
+import { PriceBandContext } from '../context/PriceBandContext'
+import '../css/AustraliaPriceBand.css';
 
 
 const AustraliaPriceBand = ({ tradingDay }) => {
     const MySpreadSheet = useRef();
 
-    const dispatch = useDispatch();
-    const { prices, pricesChanged } = useSelector( state => state.priceBand );
+   
+    const { 
+      prices, 
+      setPrices, 
+      pricesChanged, 
+      setPricesChanged 
+    } = useContext(PriceBandContext);
 
     const urlService = `http://localhost:8080/pricebands/${tradingDay}`
 
@@ -31,7 +33,7 @@ const AustraliaPriceBand = ({ tradingDay }) => {
     .then((data) => {
       options.success(data)
       console.log(data)
-      dispatch( priceBandLoaded(data) );
+      setPrices(data)
     })
       .catch(error => options.error(error));
   }
@@ -62,43 +64,43 @@ const onChanging = (e) =>{
   switch (e.range._ref.bottomRight.col) {
     case 0:
       console.log("PB01");
-      dispatch(priceBandChanged({ "PB01" : e.data }));
+      setPricesChanged([{ "PB01" : e.data }, ...pricesChanged]);
       break;
     case 1:
       console.log("PB02")
-      dispatch(priceBandChanged({ "PB02" : e.data }));
+      setPricesChanged([{ "PB02" : e.data }, ...pricesChanged]);
       break;
     case 2:
       console.log("PB03")
-      dispatch(priceBandChanged({ "PB03" : e.data }));
+      setPricesChanged([{ "PB03" : e.data }, ...pricesChanged]);
       break;
     case 3:
       console.log("PB04")
-      dispatch(priceBandChanged({ "PB04" : e.data }));
+      setPricesChanged([{ "PB04" : e.data }, ...pricesChanged]);
       break;
     case 4:
       console.log("PB05")
-      dispatch(priceBandChanged({ "PB05" : e.data }));
+      setPricesChanged([{ "PB05" : e.data }, ...pricesChanged]);
       break;
     case 5:
       console.log("PB06")
-      dispatch(priceBandChanged({ "PB06" : e.data }));
+      setPricesChanged([{ "PB06" : e.data }, ...pricesChanged]);
       break;
     case 6:
       console.log("PB07")
-      dispatch(priceBandChanged({ "PB07" : e.data }));
+      setPricesChanged([{ "PB07" : e.data }, ...pricesChanged]);
       break;
     case 7:
       console.log("PB08")
-      dispatch(priceBandChanged({ "PB08" : e.data }));
+      setPricesChanged([{ "PB08" : e.data }, ...pricesChanged]);
       break;
     case 8:
       console.log("PB09")
-      dispatch(priceBandChanged({ "PB09" : e.data }));
+      setPricesChanged([{ "PB09" : e.data }, ...pricesChanged]);
       break;
     case 9:
       console.log("PB10")
-      dispatch(priceBandChanged({ "PB10" : e.data }));
+      setPricesChanged([{ "PB10" : e.data }, ...pricesChanged]);
       break;
 
   
