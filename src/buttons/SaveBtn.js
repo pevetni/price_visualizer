@@ -1,23 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from "@progress/kendo-react-buttons";
 
-export const SaveBtn = ({urlService, data}) => {
+import { PriceBandContext } from '../context/PriceBandContext'
 
-  const onSave = (e) => {
+export const SaveBtn = ( {urlService, tradingDay } ) => {
+
+
+  const {  pricesChanged } = useContext(PriceBandContext);
+
+  const onSave = async(e) => {
     /* Llamado al Servicio de Save */
-    // fetch(urlService, {
-    //   method: "PUT",
-    //   headers: {
-    //       "Access-Control-Allow-Origin": "*",
-    //   },
-    // })
-    // .then(res => res.json())
-    // .then((data) => {
-    //     console.log(data);
-    //   })
-    // .catch(error => console.log('error', error));
+    await fetch(`${urlService}/${tradingDay}`, {
+      method: "PUT",
+      headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-type" : "application/json"
+      },
+      body: JSON.stringify(pricesChanged)
+    })
+    .then(res => res.json())
+    .then((data) => {
+        console.log(data);
+        console.log("Llega aquí")
+        
+      })
+    .catch(error => console.log('error', error));
 
-    console.log(`Method: PUT. Url:  ${urlService}`);
   }
     return (
           <Button

@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+
 import { SaveBtn } from '../buttons/SaveBtn';
 import { ResetBtn } from '../buttons/ResetBtn';
 import AustraliaPriceBand from './AustraliaPriceBand';
@@ -21,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
 export const GeneratedOffers = () => {
     const classes = useStyles();
 
-    const urlService = `http://localhost:8080/pricebands/`
-    const tradingDay = '2021-09-02';
+    const urlService = `http://localhost:8080/pricebands`
+    const tradingDay = '2021-09-03';
 
     return (
     <div className={classes.root}>
@@ -33,8 +34,8 @@ export const GeneratedOffers = () => {
       </Grid>
       <Grid container>
           <Grid item xs={12} sm={4} md={3} lg={2}>
-              <SaveBtn className={ classes.btn } urlService={urlService}/>
-              <ResetBtn className={ classes.btn } urlService={urlService}/>
+              <SaveBtn className={ classes.btn } tradingDay={ tradingDay } urlService={urlService}/>
+              <ResetBtn className={ classes.btn } tradingDay={ tradingDay } urlService={urlService}/>
               <ClearBtn className={ classes.btn } urlService={urlService}/>
           </Grid>
       </Grid>

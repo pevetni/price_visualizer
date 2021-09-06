@@ -32,7 +32,6 @@ const AustraliaPriceBand = ({ tradingDay }) => {
     .then(res => res.json())
     .then((data) => {
       options.success(data)
-      console.log(data)
       setPrices(data)
     })
       .catch(error => options.error(error));
@@ -64,43 +63,43 @@ const onChanging = (e) =>{
   switch (e.range._ref.bottomRight.col) {
     case 0:
       console.log("PB01");
-      setPricesChanged([{ "PB01" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB01", "price": e.data }, ...pricesChanged]);
       break;
     case 1:
       console.log("PB02")
-      setPricesChanged([{ "PB02" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB02", "price": e.data }, ...pricesChanged]);
       break;
     case 2:
       console.log("PB03")
-      setPricesChanged([{ "PB03" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB03", "price": e.data }, ...pricesChanged]);
       break;
     case 3:
       console.log("PB04")
-      setPricesChanged([{ "PB04" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB04", "price": e.data }, ...pricesChanged]);
       break;
     case 4:
       console.log("PB05")
-      setPricesChanged([{ "PB05" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB05", "price": e.data }, ...pricesChanged]);
       break;
     case 5:
       console.log("PB06")
-      setPricesChanged([{ "PB06" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB06", "price": e.data }, ...pricesChanged]);
       break;
     case 6:
       console.log("PB07")
-      setPricesChanged([{ "PB07" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB07", "price": e.data }, ...pricesChanged]);
       break;
     case 7:
       console.log("PB08")
-      setPricesChanged([{ "PB08" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB08", "price": e.data }, ...pricesChanged]);
       break;
     case 8:
       console.log("PB09")
-      setPricesChanged([{ "PB09" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB09", "price": e.data }, ...pricesChanged]);
       break;
     case 9:
       console.log("PB10")
-      setPricesChanged([{ "PB10" : e.data }, ...pricesChanged]);
+      setPricesChanged([ { "columnId": "PB10", "price": e.data }, ...pricesChanged]);
       break;
 
   
