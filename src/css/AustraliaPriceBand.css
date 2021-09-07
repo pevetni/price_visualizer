@@ -3,6 +3,21 @@
 .k-spreadsheet-column-header,
 .k-spreadsheet-row-header,
 .k-spreadsheet-formula-bar,
-.k-spreadsheet-top-corner {
+.k-spreadsheet-top-corner,
+.k-spreadsheet-sheets-bar {
       display:none !important;
+}
+
+.k-spreadsheet-view{
+      width: 1250px !important;
+      
+}
+
+.k-spreadsheet-scroller {
+      overflow: auto !important;
+}
+
+.k-spreadsheet {
+      width: 1250px !important;
+      height: 85px;
 }

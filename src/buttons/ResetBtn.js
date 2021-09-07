@@ -26,8 +26,7 @@ export const ResetBtn = ({urlService, tradingDay}) => {
             icon="reset" 
             look="outline"
             onClick={ onReset }
-            >
-            Reset
-          </Button>
+            title="Reset"
+            />
     )
 }

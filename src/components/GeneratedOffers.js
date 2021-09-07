@@ -32,15 +32,15 @@ export const GeneratedOffers = () => {
           <h1 >Generated Offers</h1>
         </Grid>
       </Grid>
-      <Grid container>
-          <Grid item xs={12} sm={4} md={3} lg={2}>
-              <SaveBtn className={ classes.btn } tradingDay={ tradingDay } urlService={urlService}/>
-              <ResetBtn className={ classes.btn } tradingDay={ tradingDay } urlService={urlService}/>
+      <Grid container justifyContent='flex-end'>
+          <Grid item>
               <ClearBtn className={ classes.btn } urlService={urlService}/>
+              <ResetBtn className={ classes.btn } tradingDay={ tradingDay } urlService={urlService}/>
+              <SaveBtn className={ classes.btn } tradingDay={ tradingDay } urlService={urlService}/>
           </Grid>
       </Grid>
-      <Grid container >
-          <Grid item xs={12} sm={6}>
+      <Grid container spacing={12}>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
               <AustraliaPriceBand tradingDay={ tradingDay } />
           </Grid>
       </Grid>

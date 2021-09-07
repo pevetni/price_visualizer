@@ -12,8 +12,8 @@ export const ClearBtn = () => {
             icon="clear" 
             look="outline"
             onClick={ onClear }
-            >
-            Clear
-          </Button>
+            title="Clear"
+            />
+            
     )
 }

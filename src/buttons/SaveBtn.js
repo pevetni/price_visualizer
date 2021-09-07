@@ -21,8 +21,6 @@ export const SaveBtn = ( {urlService, tradingDay } ) => {
     .then(res => res.json())
     .then((data) => {
         console.log(data);
-        console.log("Llega aquí")
-        
       })
     .catch(error => console.log('error', error));
 
@@ -33,8 +31,8 @@ export const SaveBtn = ( {urlService, tradingDay } ) => {
             icon="save" 
             look="outline"
             onClick={ onSave }
-            >
-          Save
-          </Button>
+            title="Save"
+            />
+          
     )
 }
