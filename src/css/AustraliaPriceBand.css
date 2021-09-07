@@ -19,5 +19,9 @@
 
 .k-spreadsheet {
       width: 1250px !important;
-      height: 85px;
+      height: 85px !important;
+      border-style: none !important;
+}
+.k-spreadsheet-pane {
+      border-style: none !important;
 }

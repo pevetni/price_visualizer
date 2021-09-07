@@ -35,11 +35,9 @@ const AustraliaPriceBand = ({ tradingDay }) => {
       datos.push(data);
       console.log(datos)
       setPrices(data)
-    })
-      .catch((error) =>{
+    }).catch((error) =>{
         options.error(error);
-        
-      } );
+    });
   }
 
 
@@ -300,12 +298,12 @@ const onChanging = (e) =>{
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
-                //borderTop: { color: "black", size: 1 },
+                borderTop: { color: "black", size: 1 },
                 borderRight: { color: "black", size: 1 },
                 bold: true,
                 background: "#E4E7EA",
                 enable: false 
-              } 
+              }
             ]
           }
         ],
