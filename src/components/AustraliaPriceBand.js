@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useContext } from "react";
 import kendo from "@progress/kendo-ui";
 import { Spreadsheet } from "@progress/kendo-spreadsheet-react-wrapper";
 
@@ -8,7 +8,7 @@ import '../css/AustraliaPriceBand.css';
 
 const AustraliaPriceBand = ({ tradingDay }) => {
     const MySpreadSheet = useRef();
-
+    const datos = [];
    
     const { 
       prices, 
@@ -32,28 +32,13 @@ const AustraliaPriceBand = ({ tradingDay }) => {
     .then(res => res.json())
     .then((data) => {
       options.success(data)
+      datos.push(data);
+      console.log(datos)
       setPrices(data)
     })
       .catch(error => options.error(error));
   }
 
-  const onSubmit = (options) => {
-
-    /* TODO: Invocar el Servicio de SAVE */
-    fetch(urlService, {
-      method: "PUT",
-      headers: {
-          "Access-Control-Allow-Origin": "*",
-          'Accept': 'application/json'
-      },
-      body: {
-        prices      }
-    })
-    .then(res => res.json())
-    .then((data) => {
-        options.success(data);
-    }).catch(error => options.error(error));
-  }
 
 /* OnChanging */
 const onChanging = (e) =>{
@@ -138,24 +123,43 @@ const onChanging = (e) =>{
         name: "Prices",
         dataSource: dataSource,
         frozenRows: 1,
-        //mergedCells: ["K1:K2"],
+        mergedCells: ["A1:J1","K1:K2"],
         rows: [
           { cells: 
             [ 
-              // { 
-              //   index: 0,
-              //   format: "[<999999999]###-###-####;###-####-####",
-              //   textAlign: "center",
-              //   value: "Price Band",
-              //   verticalAlign: "center",
-              //   borderBottom: { color: "black", size: 1 },
-              //   borderLeft: { color: "black", size: 1 },
-              //   borderTop: { color: "black", size: 1 },
-              //   borderRight: { color: "black", size: 1 },
-              //   bold: true,
-              //   background: "#E4E7EA", 
-              //   enable: false
-              // },
+              { 
+                index: 0,
+                format: "[<999999999]###-###-####;###-####-####",
+                textAlign: "center",
+                value: "Price Band",
+                verticalAlign: "center",
+                borderBottom: { color: "black", size: 1 },
+                borderLeft: { color: "black", size: 1 },
+                borderTop: { color: "black", size: 1 },
+                borderRight: { color: "black", size: 1 },
+                bold: true,
+                background: "#E4E7EA", 
+                enable: false
+              }, 
+              { 
+                index: 10,
+                format: "[<999999999]###-###-####;###-####-####",
+                textAlign: "center",
+                value: "Daily energy constrain (MWh)",
+                verticalAlign: "center",
+                borderBottom: { color: "black", size: 1 },
+                borderLeft: { color: "black", size: 1 },
+                borderTop: { color: "black", size: 1 },
+                borderRight: { color: "black", size: 1 },
+                bold: true,
+                background: "#E4E7EA",
+                rowSpan: 3,
+                enable: false
+              } 
+            ]
+          },
+          { cells: 
+            [ 
               { 
                 index: 0,
                 textAlign: "center",
@@ -298,42 +302,9 @@ const onChanging = (e) =>{
                 bold: true,
                 background: "#E4E7EA",
                 enable: false 
-              }, 
-              { 
-                index: 10,
-                format: "[<999999999]###-###-####;###-####-####",
-                textAlign: "center",
-                value: "Daily energy constrain (MWh)",
-                verticalAlign: "center",
-                borderBottom: { color: "black", size: 1 },
-                borderLeft: { color: "black", size: 1 },
-                borderTop: { color: "black", size: 1 },
-                borderRight: { color: "black", size: 1 },
-                bold: true,
-                background: "#E4E7EA",
-                rowSpan: 3,
-                enable: false
-              }  
+              } 
             ]
-          },
-          // { cells: 
-          //   [
-          //     {
-          //       index: 0,
-          //        validation: {
-          //           dataType: "number",
-          //           from: "B1",
-          //           to:"C1",
-          //           allowNulls: true,
-          //           comparerType:"equalTo" ,
-          //           type: "reject",
-          //           titleTemplate: "Number validation error",
-          //           messageTemplate: "The number have to be between"
-          //       }
-          //     },
-
-          //   ]
-          // }
+          }
         ],
         columns: 
           [
@@ -386,13 +357,41 @@ const onChanging = (e) =>{
       },
     ];
 
+    dataSource.one("requestEnd", () => {
+      setTimeout(()=>{
+        let sheet = MySpreadSheet.current.widgetInstance.activeSheet();
+        sheet.range("A1").value("Price Bands"); 
+        sheet.range("A2").value("PB01");
+        sheet.range("B2").value("PB02");
+        sheet.range("C2").value("PB03");
+        sheet.range("D2").value("PB04");
+        sheet.range("E2").value("PB05");
+        sheet.range("F2").value("PB06");
+        sheet.range("G2").value("PB07");
+        sheet.range("H2").value("PB08");
+        sheet.range("I2").value("PB09");
+        sheet.range("J2").value("PB10");
+        //
+        sheet.range("A3").value(datos[0].PB01);
+        sheet.range("B3").value(datos[0].PB02);
+        sheet.range("C3").value(datos[0].PB03);
+        sheet.range("D3").value(datos[0].PB04);
+        sheet.range("E3").value(datos[0].PB05);
+        sheet.range("F3").value(datos[0].PB06);
+        sheet.range("G3").value(datos[0].PB07);
+        sheet.range("H3").value(datos[0].PB08);
+        sheet.range("I3").value(datos[0].PB09);
+        sheet.range("J3").value(datos[0].PB10);
+      })
+    })
+
     return (
       <>
         <Spreadsheet
           sheets={sheets}
           toolbar={false}
           sheetsbar={false}
-          rows={2}
+          rows={3}
           columns={11}
           useCultureDecimals={true}
           ref={MySpreadSheet}
