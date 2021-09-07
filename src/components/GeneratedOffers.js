@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import { SaveBtn } from '../buttons/SaveBtn';
 import { ResetBtn } from '../buttons/ResetBtn';
 import AustraliaPriceBand from './AustraliaPriceBand';
-import { ClearBtn } from '../buttons/ClearBtn';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,14 +33,13 @@ export const GeneratedOffers = () => {
       </Grid>
       <Grid container justifyContent='flex-end'>
           <Grid item>
-              <ClearBtn className={ classes.btn } urlService={urlService}/>
               <ResetBtn className={ classes.btn } tradingDay={ tradingDay } urlService={urlService}/>
               <SaveBtn className={ classes.btn } tradingDay={ tradingDay } urlService={urlService}/>
           </Grid>
       </Grid>
       <Grid container spacing={12}>
           <Grid item xs={12} sm={6} md={4} lg={3}>
-              <AustraliaPriceBand tradingDay={ tradingDay } />
+              <AustraliaPriceBand tradingDay={ tradingDay } urlService={ urlService }/>
           </Grid>
       </Grid>
     </div>
