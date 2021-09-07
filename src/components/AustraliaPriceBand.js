@@ -163,7 +163,7 @@ const onChanging = (e) =>{
               { 
                 index: 0,
                 textAlign: "center",
-                //value: "PB01",
+                value: "PB01",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -176,7 +176,7 @@ const onChanging = (e) =>{
               { 
                 index: 1,
                 textAlign: "center",
-                //value: "PB02",
+                value: "PB02",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -189,7 +189,7 @@ const onChanging = (e) =>{
               { 
                 index: 2,
                 textAlign: "center",
-                //value: "PB03",
+                value: "PB03",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -202,7 +202,7 @@ const onChanging = (e) =>{
               { 
                 index: 3,
                 textAlign: "center",
-                //value: "PB04",
+                value: "PB04",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -215,7 +215,7 @@ const onChanging = (e) =>{
               { 
                 index: 4,
                 textAlign: "center",
-                //value: "PB05",
+                value: "PB05",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -228,7 +228,7 @@ const onChanging = (e) =>{
               { 
                 index: 5,
                 textAlign: "center",
-                //value: "PB06",
+                value: "PB06",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -241,7 +241,7 @@ const onChanging = (e) =>{
               { 
                 index: 6,
                 textAlign: "center",
-                //value: "PB07",
+                value: "PB07",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -254,7 +254,7 @@ const onChanging = (e) =>{
               { 
                 index: 7,
                 textAlign: "center",
-                //value: "PB08",
+                value: "PB08",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -267,7 +267,7 @@ const onChanging = (e) =>{
               { 
                 index: 8,
                 textAlign: "center",
-                //value: "PB09",
+                value: "PB09",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -280,7 +280,7 @@ const onChanging = (e) =>{
               { 
                 index: 9,
                 textAlign: "center",
-                //value: "PB10",
+                value: "PB10",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -293,7 +293,7 @@ const onChanging = (e) =>{
               { 
                 index: 10,
                 textAlign: "center",
-                //value: "PB10",
+                value: "PB10",
                 verticalAlign: "center",
                 borderBottom: { color: "black", size: 1 },
                 borderLeft: { color: "black", size: 1 },
@@ -359,29 +359,31 @@ const onChanging = (e) =>{
 
     dataSource.one("requestEnd", () => {
       setTimeout(()=>{
-        let sheet = MySpreadSheet.current.widgetInstance.activeSheet();
-        sheet.range("A1").value("Price Bands"); 
-        sheet.range("A2").value("PB01");
-        sheet.range("B2").value("PB02");
-        sheet.range("C2").value("PB03");
-        sheet.range("D2").value("PB04");
-        sheet.range("E2").value("PB05");
-        sheet.range("F2").value("PB06");
-        sheet.range("G2").value("PB07");
-        sheet.range("H2").value("PB08");
-        sheet.range("I2").value("PB09");
-        sheet.range("J2").value("PB10");
-        //
-        sheet.range("A3").value(datos[0].PB01);
-        sheet.range("B3").value(datos[0].PB02);
-        sheet.range("C3").value(datos[0].PB03);
-        sheet.range("D3").value(datos[0].PB04);
-        sheet.range("E3").value(datos[0].PB05);
-        sheet.range("F3").value(datos[0].PB06);
-        sheet.range("G3").value(datos[0].PB07);
-        sheet.range("H3").value(datos[0].PB08);
-        sheet.range("I3").value(datos[0].PB09);
-        sheet.range("J3").value(datos[0].PB10);
+        if(datos.length>0) {
+          let sheet = MySpreadSheet.current.widgetInstance.activeSheet();
+          sheet.range("A1").value("Price Bands"); 
+          sheet.range("A2").value("PB01");
+          sheet.range("B2").value("PB02");
+          sheet.range("C2").value("PB03");
+          sheet.range("D2").value("PB04");
+          sheet.range("E2").value("PB05");
+          sheet.range("F2").value("PB06");
+          sheet.range("G2").value("PB07");
+          sheet.range("H2").value("PB08");
+          sheet.range("I2").value("PB09");
+          sheet.range("J2").value("PB10");
+          //
+          sheet.range("A3").value(datos[0].PB01);
+          sheet.range("B3").value(datos[0].PB02);
+          sheet.range("C3").value(datos[0].PB03);
+          sheet.range("D3").value(datos[0].PB04);
+          sheet.range("E3").value(datos[0].PB05);
+          sheet.range("F3").value(datos[0].PB06);
+          sheet.range("G3").value(datos[0].PB07);
+          sheet.range("H3").value(datos[0].PB08);
+          sheet.range("I3").value(datos[0].PB09);
+          sheet.range("J3").value(datos[0].PB10);
+        }
       })
     })
 
