@@ -31,12 +31,15 @@ const AustraliaPriceBand = ({ tradingDay }) => {
     })
     .then(res => res.json())
     .then((data) => {
-      options.success(data)
+      options.success(data);
       datos.push(data);
       console.log(datos)
       setPrices(data)
     })
-      .catch(error => options.error(error));
+      .catch((error) =>{
+        options.error(error);
+        
+      } );
   }
 
 
