@@ -21,3 +21,7 @@
       width: 1250px !important;
       height: 85px;
 }
+
+.k-notification-container {
+      margin: 6px;
+  }
