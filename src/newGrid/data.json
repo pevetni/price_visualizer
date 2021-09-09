@@ -1,0 +1,107 @@
+[
+    {
+        "icon": "k-i-cancel",
+        "Session": "M1",
+        "ExecutedAt": "6/30/2014 9:30",
+        "ExecutedBy": "",
+        "SentAt": "",
+        "SentBy": "",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M1",
+        "ExecutedAt": "6/30/2014 9:45",
+        "ExecutedBy": "",
+        "SentAt": "",
+        "SentBy": "",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M1",
+        "ExecutedAt": "6/30/2014 9:50",
+        "ExecutedBy": "",
+        "SentAt": "",
+        "SentBy": "",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M1",
+        "ExecutedAt": "6/30/2014 9:55",
+        "ExecutedBy": "",
+        "SentAt": "",
+        "SentBy": "",
+        "Strategy": "AGRESSIVE"
+    },
+    {
+        "Session": "M1",
+        "ExecutedAt": "6/30/2014 10:00",
+        "ExecutedBy": "",
+        "SentAt": "6/30/2014 10:05",
+        "SentBy": "D. Garrido",
+        "Strategy": "AGRESSIVE"
+    },
+    {
+        "Session": "M2",
+        "ExecutedAt": "6/30/2014 10:10",
+        "ExecutedBy": "",
+        "SentAt": "",
+        "SentBy": "",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M2",
+        "ExecutedAt": "6/30/2014 10:05",
+        "ExecutedBy": "",
+        "SentAt": "",
+        "SentBy": "",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M2",
+        "ExecutedAt": "6/30/2014 10:15",
+        "ExecutedBy": "",
+        "SentAt": "6/30/2014 10:20",
+        "SentBy": "D. Garrido",
+        "Strategy": "STRATEGIA_M2"
+    },
+    {
+        "Session": "M3",
+        "ExecutedAt": "6/30/2014 10:25",
+        "ExecutedBy": "",
+        "SentAt": "6/30/2014 10:30",
+        "SentBy": "D. Garrido",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M4",
+        "ExecutedAt": "6/30/2014 10:35",
+        "ExecutedBy": "",
+        "SentAt": "6/30/2014 10:40",
+        "SentBy": "D. Garrido",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M5",
+        "ExecutedAt": "6/30/2014 10:45",
+        "ExecutedBy": "",
+        "SentAt": "6/30/2014 10:50",
+        "SentBy": "D. Garrido",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M6",
+        "ExecutedAt": "6/30/2014 10:55",
+        "ExecutedBy": "",
+        "SentAt": "6/30/2014 11:00",
+        "SentBy": "D. Garrido",
+        "Strategy": "DEFAULT"
+    },
+    {
+        "Session": "M7",
+        "ExecutedAt": "6/30/2014 11:05",
+        "ExecutedBy": "",
+        "SentAt": "6/30/2014 11:10",
+        "SentBy": "D. Garrido",
+        "Strategy": "DEFAULT"
+    }
+]

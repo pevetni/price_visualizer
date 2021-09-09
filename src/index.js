@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import '@progress/kendo-theme-default/dist/all.css';
 
 // import { MainApp } from './components/MainApp';
-import GridNew from './newGrid/GridNew';
+import GridNew2 from './newGrid/GridNew2';
 
 const divRoot = document.querySelector('#root');
 
-ReactDOM.render( <GridNew />, divRoot );
+ReactDOM.render( <GridNew2 />, divRoot );

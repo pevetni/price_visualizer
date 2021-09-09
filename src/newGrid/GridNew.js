@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import kendo from "@progress/kendo-ui";
 import { Spreadsheet } from "@progress/kendo-spreadsheet-react-wrapper";
 
-import '../css/GridNew.css';
+import './GridNew.css';
 
 const defaultCellStyle = {
   textAlign: "center",
